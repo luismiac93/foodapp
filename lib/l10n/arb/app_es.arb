@@ -1,5 +1,15 @@
 {
   "hello": "Hola",
   "cheese": "queso",
-  "rickAndMorty": "Rick and Morty"
+  "rickAndMorty": "Rick and Morty",
+  "welcome": "Bienvenido a Food App",
+  "login": "Iniciar sesión",
+  "register": "Registrarse",
+  "youDoNotHaveAnAccountYet": "¿Aun no tienes cuenta?",
+  "youHaveAnAccountYet": "¿Ya tienes cuenta?",
+  "registerHere": "Regístrate aquí",
+  "loginHere": "Ingresa aquí",
+  "email": "Email",
+  "password": "Contraseña",
+  "name": "Nombre"
 }

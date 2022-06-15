@@ -1,27 +1,28 @@
+import 'package:cleanar_base_app/login/application/login_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '/example/infrastructure/example_repository.dart';
 
+import '/example/infrastructure/example_repository.dart';
 import '/example/application/example_state.dart';
 
 ///Example notifier
-class ExampleNotifier extends StateNotifier<ExampleState> {
+class LoginNotifier extends StateNotifier<LoginState> {
   /// Constructor
-  ExampleNotifier({required this.exampleRepository})
-      : super(const ExampleState.initial());
+  LoginNotifier({required this.exampleRepository})
+      : super(const LoginState.initial());
 
   ///Repository Example
   final ExampleRepository exampleRepository;
 
   ///Get list of the Character
   Future<void> getExample() async {
-    state = const ExampleState.loading();
+    state = const LoginState.loading();
 
     ///Get all Example to the user country
     final result = await exampleRepository.getCharacters();
 
     state = result.fold(
-      (error) => ExampleState.error(error),
-      (characters) => ExampleState.data(characters: characters),
+      (error) => LoginState.error(error),
+      (characters) => LoginState.data(characters: characters),
     );
   }
 }
