@@ -3,3 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 ///User
 final userProvider = StateProvider<User?>((ref) => null);
+
+///User
+final searchProvider = StateProvider<String>((ref) => '');
+

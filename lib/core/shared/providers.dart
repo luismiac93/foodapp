@@ -1,5 +1,7 @@
 import 'package:cleanar_base_app/core/infrastructure/core_repository.dart';
 import 'package:cleanar_base_app/core/infrastructure/remote_service/core_service.dart';
+import 'package:cleanar_base_app/home/appplication/character_notifier.dart';
+import 'package:cleanar_base_app/home/appplication/character_state.dart';
 import 'package:cleanar_base_app/login/application/login_notifier.dart';
 import 'package:cleanar_base_app/login/application/login_state.dart';
 import 'package:cleanar_base_app/main.dart';
@@ -35,6 +37,14 @@ final registerNotifierProvider =
 ///login notifier provider
 final loginNotifierProvider = StateNotifierProvider<LoginNotifier, LoginState>(
   (ref) => LoginNotifier(
+    coreRepository: ref.watch(coreRepositoryProvider),
+  ),
+);
+
+///login notifier provider
+final characterNotifierProvider =
+    StateNotifierProvider<CharacterNotifier, CharacterState>(
+  (ref) => CharacterNotifier(
     coreRepository: ref.watch(coreRepositoryProvider),
   ),
 );

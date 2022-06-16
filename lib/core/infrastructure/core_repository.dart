@@ -68,4 +68,29 @@ class CoreRepository {
       return left(CommonFailure.data(message: e.message));
     }
   }
+
+  /// Returns a failure or the list of Character
+  Future<Either<CommonFailure, List<Character>>> getCharacters(
+      String name) async {
+    try {
+      final charactersDTO = await _coreService.getCharacters(name);
+
+      /// returns list of Character
+      return right(charactersDTO.characterListToDomain());
+    } on NoInternetConnectionException catch (e) {
+      /// returns failure if there was internet connection problem
+      return left(CommonFailure.noConnection(message: e.message));
+    } on RestApiException catch (e) {
+      /// returns failure caused by server exception
+      return left(
+        CommonFailure.server(
+          code: e.errorCode ?? serverErrorCode,
+          message: e.errorMessage ?? serverErrorMessage,
+        ),
+      );
+    } on ErrorInRequestException catch (e) {
+      /// returns failure if there was error in request
+      return left(CommonFailure.data(message: e.message));
+    }
+  }
 }
