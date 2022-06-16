@@ -1,28 +1,28 @@
-import 'package:cleanar_base_app/login/application/login_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '/example/infrastructure/example_repository.dart';
-import '/example/application/example_state.dart';
+import '/core/domain/user.dart';
+import '/core/infrastructure/core_repository.dart';
+import '/login/application/login_state.dart';
 
-///Example notifier
+///Login notifier
 class LoginNotifier extends StateNotifier<LoginState> {
   /// Constructor
-  LoginNotifier({required this.exampleRepository})
+  LoginNotifier({required this.coreRepository})
       : super(const LoginState.initial());
 
-  ///Repository Example
-  final ExampleRepository exampleRepository;
+  ///Repository core
+  final CoreRepository coreRepository;
 
   ///Get list of the Character
-  Future<void> getExample() async {
+  Future<void> login(User user) async {
     state = const LoginState.loading();
 
-    ///Get all Example to the user country
-    final result = await exampleRepository.getCharacters();
+    ///Get all core to the user country
+    final result = await coreRepository.login(user);
 
     state = result.fold(
       (error) => LoginState.error(error),
-      (characters) => LoginState.data(characters: characters),
+      (user) => LoginState.data(user: user),
     );
   }
 }

@@ -11,5 +11,6 @@
   "loginHere": "Ingresa aquí",
   "email": "Email",
   "password": "Contraseña",
-  "name": "Nombre"
+  "name": "Nombre",
+  "city": "Ciudad"
 }

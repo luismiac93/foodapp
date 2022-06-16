@@ -1,11 +1,12 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:cleanar_base_app/core/domain/user.dart';
-import 'package:cleanar_base_app/core/shared/providers.dart';
-import 'package:cleanar_base_app/register/application/register_provider.dart';
-import 'package:cleanar_base_app/register/application/register_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '/home/appplication/home_provider.dart';
+import '/core/domain/user.dart';
+import '/core/shared/providers.dart';
+import '/register/application/register_provider.dart';
+import '/register/application/register_state.dart';
 import '/core/presentation/routes/router.gr.dart';
 import '/core/presentation/widgets/custom_elevated_button.dart';
 import '/core/presentation/styles/text_style.dart';
@@ -23,7 +24,7 @@ class RegisterPage extends ConsumerWidget {
       next.maybeWhen(
           orElse: () {},
           data: (user) {
-            print(user);
+            ref.read(userProvider.state).state = user;
             context.replaceRoute(const HomeRoute());
           },
           error: (error) {
