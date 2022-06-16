@@ -23,8 +23,8 @@ class _HomePageState extends ConsumerState<HomePage> {
   ///Controller to debounce
   Timer? _debounce;
 
-  ///Email change
-  void _onEmailChanged(String value) {
+  ///City change
+  void _onCityChanged(String value) {
     if (_debounce?.isActive ?? false) _debounce?.cancel();
     _debounce = Timer(const Duration(milliseconds: 1000), () {
       ref.read(characterNotifierProvider.notifier).getCharacters(value);
@@ -57,7 +57,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 const SizedBox(height: 16),
                 CustomTextFormField(
                   hintText: context.l10n.city,
-                  onChanged: _onEmailChanged,
+                  onChanged: _onCityChanged,
                 ),
                 const SizedBox(height: 16),
                 state.when(

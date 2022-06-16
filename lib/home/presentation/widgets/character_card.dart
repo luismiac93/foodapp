@@ -68,6 +68,5 @@ class CharacterCard extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }

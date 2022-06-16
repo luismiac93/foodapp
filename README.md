@@ -12,4 +12,14 @@ Includes the following preconfigured packages
 - auto_route to manage the navigation of the app
 - assets/ base configuration paths to images and icons 
 
+## Installation steps 
+
+Clone this repository  
+
+Run: `flutter pub get`
+
+Run: `flutter pub run build_runner build --delete-conflicting-outputs`
+
+Run the project.
+
 
